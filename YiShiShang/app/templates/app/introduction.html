@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static from staticfiles %}
+    <meta charset="UTF-8">
+    <title>活动介绍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href={% static "app/img/favicon.ico" %}/>
+    <link rel="stylesheet" href= {% static "app/css/bootstrap.min.css" %} />
+    <link rel="stylesheet" href= {% static "app/font-awesome/css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href= {% static "app/css/yishishang.css" %}>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <style>
+        .vertical-center{  position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  }
+        .box-style{
+            margin:0 auto;
+            margin-top:200px;
+            background-color: rgba(255, 255, 255, 0);
+            width:200px;
+            height:200px;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 0);
+            animation: my-rotate 2s;
+        }
+        @keyframes my-rotate {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(45deg);
+            }
+        }
+        .text-style{
+            color: #ffffff;
+            line-height: 40px;
+            letter-spacing: 0px;
+            text-indent: 0px;
+            font-family: Hiragino Sans GB,Microsoft YaHei,SimHei,STHeiti;
+            font-weight: normal;
+            text-decoration: none;
+            text-align: center;
+            font-style: normal;
+            text-transform: none;
+            direction: ltr;
+            z-index:10;
+            margin: 0 auto;
+            position: absolute;
+            width:100%;
+            top:0;
+            left: 0;
+{#            border-bottom: 2px dotted rgba(255,255,255,0.6);#}
+        }
+        #main_title{
+            font-size: 0px;
+            opacity: 0;
+        }
+        #child_title{
+            color:#e3a659;
+            font-size: 0px;
+            opacity: 0;
+        }
+        #click-to-data button{
+            padding: 5px 20px;
+            background-color: inherit;
+            border: 2px solid white;
+        }
+        #click-to-data button:focus{
+            color: white !important;
+            border: 2px solid rgba(255,0,0,0.75);
+        }
+        #click-to-data button:active{
+            color: white !important;
+            border: 2px solid rgba(255,0,0,0.75);
+        }
+    </style>
+</head>
+<body style="text-align:center;background: url(/static/app/img/introduction.jpg);-moz-background-size: cover;-ms-background-size: cover;-webkit-background-size: cover;background-size: cover;">
+    <div id="icon" class="box-style" style=""></div>
+    <div id = "title" class="text-style" style="">
+        <div id="main_title">衣无忧</div>
+        <div id="child_title" style = "">属于你的服装搭配</div>
+        <div id = "click-to-data" >
+            <button class="btn" onclick="window.location.href='/data_collect/'">点击进入</button>
+        </div>
+
+    </div>
+    <script src= {% static "app/js/jquery-3.1.1.min.js" %}></script>
+    <script src= {% static "app/js/bootstrap.min.js" %}></script>
+    <script src= {% static "app/js/highcharts.js" %}></script>
+    <script src= {% static "app/js/vue.js" %}></script>
+    <script>
+
+        var width = $(document).width();
+        var height = $(document).height();
+        var div_width = width * 0.5;
+        $("#icon").width(div_width).height(div_width).css("margin-top", 0.1*height);
+        $("#title").css("margin-top", 0.1*height + 0.5*div_width - 32).width(div_width * Math.SQRT2).css("left", (width - div_width * Math.SQRT2) * 0.5 );
+
+        $("#main_title").css("border-bottom", "2px dotted rgba(255,255,255,0.6)").animate({"font-size": "32px", "opacity": 1}, 2000);
+
+        $("#child_title").animate({"font-size": "24px", "opacity": 1}, 2000);
+        console.log(0.1*height);
+        console.log(div_width);
+        console.log(div_width * Math.SQRT2);
+        $("#click-to-data").css("margin-top", (height - (0.1*height + 0.5*div_width - 32)) / 2);
+    </script>
+</body>
+</html>

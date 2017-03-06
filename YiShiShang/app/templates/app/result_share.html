@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static from staticfiles %}
+    <meta charset="UTF-8">
+    <title>分享给好友</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href={% static "app/img/favicon.ico" %}/>
+    <link rel="stylesheet" href= {% static "app/css/bootstrap.min.css" %} />
+    <link rel="stylesheet" href= {% static "app/font-awesome/css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href= {% static "app/css/yishishang.css" %}>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body style="text-align:center;background: url(/static/app/img/share.jpg);-moz-background-size: cover;-ms-background-size: cover;-webkit-background-size: cover;background-size: cover;">
+    <div id="container" style="text-align: center;">
+        <div id="result_title" style="font-size: 32px;color:red;">
+            太美没有匹配，快来关注公众号获取属于你的搭配吧！
+        </div>
+        <div id="share_img" style="text-align: center;">
+            <img src="/static/app/img/share_icon.jpg" width="100" height="100">
+            <h4>长按关注哦！</h4>
+        </div>
+
+    </div>
+
+    <script src= {% static "app/js/jquery-3.1.1.min.js" %}></script>
+    <script src= {% static "app/js/bootstrap.min.js" %}></script>
+    <script>
+        var height = $(document).height();
+        var width = $(document).width();
+        var margin_height = height * 0.1;
+        var margin_width = width * 0.05;
+        $("#container").css({"margin-top": margin_height, "margin-left": margin_width, "border": "1px dotted red", "width":0.9 * width, "height": 0.8 * height });
+        var result_title_height = $("#result_title").height();
+        var img_div_margin = (0.8*height - result_title_height) / 2;
+        $("#share_img").css("margin-top", img_div_margin);
+    </script>
+</body>
+</html>

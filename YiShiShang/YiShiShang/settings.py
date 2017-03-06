@@ -25,18 +25,24 @@ SECRET_KEY = '3uof2k4$9%ye52z#o(+lme!+kfhr3(-!^i0uad-d2%tuzp(vb0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.95.2',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,4 +105,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+import os
 STATIC_URL = '/static/'
+STATIC_ROOT = './static/'
+STATICFILES_DIRS = (
+    ("app" + os.sep + "css", os.path.join(STATIC_ROOT, '../app_static/css')),
+    ("app" + os.sep + "js", os.path.join(STATIC_ROOT, '../app_static/js')),
+    ("app" + os.sep + "img", os.path.join(STATIC_ROOT, '../app_static/img')),
+    ("app" + os.sep + "fonts", os.path.join(STATIC_ROOT, '../app_static/fonts')),
+    ("app" + os.sep + "font-awesome", os.path.join(STATIC_ROOT, '../app_static/font-awesome')),
+)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = './media/'

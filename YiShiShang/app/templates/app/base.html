@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static from staticfiles %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Base Template{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href={% static "app/img/favicon.ico" %}/>
+    <link rel="stylesheet" href= {% static "app/css/bootstrap.min.css" %} />
+    <link rel="stylesheet" href= {% static "app/font-awesome/css/font-awesome.min.css" %}>
+    <link rel="stylesheet" href= {% static "app/css/yishishang.css" %}>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    {% block special_css %}
+
+    {% endblock %}
+</head>
+<body>
+    <div id = "header">
+        <span style="font-size: 24px;color:#761c19;font-family: 'Arial','Microsoft YaHei','黑体','宋体',sans-serif;">架空故障指示器</span>
+        <nav id="MultiTabWrapper">
+            <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item" style="width: 200px;"><a class="load-position pure-menu-link" disabled="true">&nbsp;</a></li>
+                    <li class="pure-menu-item"><a href="/index/" class="pure-menu-link">首页</a></li>
+                    <li class="pure-menu-item"><a name="current_item" href="/device_list/" class="pure-menu-link">设备列表</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id = "slider">
+        <div class="pure-menu custom-restricted-width">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="/index/" class="pure-menu-link"><i class="fa fa-address-book pure-menu-item-icon"></i>首页</a></li>
+                <li class="pure-menu-item"><a href="/device_list/" class="pure-menu-link"><i class="fa fa-address-book pure-menu-item-icon"></i>设备列表</a></li>
+                <li class="pure-menu-item"><a href="/data_list/" class="pure-menu-link"><i class="fa fa-bandcamp pure-menu-item-icon"></i>数据列表</a></li>
+                <li class="pure-menu-item"><a href="/user_list/" class="pure-menu-link"><i class="fa fa-free-code-camp pure-menu-item-icon"></i>用户列表</a></li>
+                <li class="pure-menu-item"><a href="/area_list/" class="pure-menu-link"><i class="fa fa-ravelry pure-menu-item-icon"></i>区域列表</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-window-maximize pure-menu-item-icon"></i>接收状态</a></li>
+                <li class="pure-menu-item"><a href="/receive_log/" class="pure-menu-link"><i class="fa fa-window-maximize pure-menu-item-icon"></i>接收日志</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-anchor pure-menu-item-icon"></i>配置列表</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-binoculars pure-menu-item-icon"></i>信息通知</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id = "body_content">
+        {% block content_body %}
+            <div id="app1">
+              123{% verbatim %} {{ message }} {% endverbatim %}
+            </div>
+        {% endblock %}
+    </div>
+    <div id = "footer">
+
+    </div>
+    <script src= {% static "app/js/jquery-3.1.1.min.js" %}></script>
+    <script src= {% static "app/js/bootstrap.min.js" %}></script>
+    <script src= {% static "app/js/highcharts.js" %}></script>
+    <script src= {% static "app/js/vue.js" %}></script>
+    <script>
+        var height =  $(document).height();
+        $("#slider").height(height);
+    </script>
+    {% block special_js %}
+    <script>
+        $(function(){
+           var app1 = new Vue({
+              el: '#app1',
+              data: {
+                message: 'Hello Vue.js!'
+              }
+            });
+        });
+    </script>
+    {% endblock %}
+    <script>
+        var link = window.location;
+        var link_name = link.pathname.split("/")[1]
+        var dic = {};
+        dic["index"] = "首页";
+        dic["device_list"] = "设备列表";
+        dic["user_list"] = "用户列表";
+        dic["area_list"] = "区域列表";
+        dic["data_list"] = "数据列表";
+        dic["receive_log"] = "接收日志";
+        if(link_name != "index"){
+            $("[name=current_item]").html(dic[link_name]);
+            $("[name=current_item]").attr("href",link);
+            $("[name=current_item]").parent().addClass("active");
+        }
+    </script>
+</body>
+</html>
