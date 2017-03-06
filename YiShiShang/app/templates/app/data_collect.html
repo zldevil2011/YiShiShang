@@ -31,10 +31,10 @@
         <form onsubmit="return false;">
             <table id = "data_table" class="table" style="width: 80%; margin: 0 auto;">
                 <tr><td><input id="height" type="number" class="form-control" placeholder="身高"></td></tr>
-                <tr><td><input id="weight" type="number" class="form-control" placeholder="身高"></td></tr>
-                <tr><td><input id="bust" type="number" class="form-control" placeholder="身高"></td></tr>
-                <tr><td><input id="waist_circumference" type="number" class="form-control" placeholder="身高"></td></tr>
-                <tr><td><input id="hip_circumference" type="number" class="form-control" placeholder="身高"></td></tr>
+                <tr><td><input id="weight" type="number" class="form-control" placeholder="体重"></td></tr>
+                <tr><td><input id="bust" type="number" class="form-control" placeholder="胸围"></td></tr>
+                <tr><td><input id="waist_circumference" type="number" class="form-control" placeholder="腰围"></td></tr>
+                <tr><td><input id="hip_circumference" type="number" class="form-control" placeholder="臀围"></td></tr>
                 <tr><td><button class="btn btn-block btn-success" onclick="submit_data();">提交数据</button></td></tr>
             </table>
         </form>
@@ -62,19 +62,19 @@
                 return;
             }
             if(weight==""){
-                $("#weight").attr("placeholder","请填写身高").focus();
+                $("#weight").attr("placeholder","请填写体重").focus();
                 return;
             }
             if(bust==""){
-                $("#bust").attr("placeholder","请填写身高").focus();
+                $("#bust").attr("placeholder","请填写胸围").focus();
                 return;
             }
             if(waist_circumference==""){
-                $("#waist_circumference").attr("placeholder","请填写身高").focus();
+                $("#waist_circumference").attr("placeholder","请填写腰围").focus();
                 return;
             }
             if(hip_circumference==""){
-                $("#hip_circumference").attr("placeholder","请填写身高").focus();
+                $("#hip_circumference").attr("placeholder","请填写臀围").focus();
                 return;
             }
             $.ajax({
